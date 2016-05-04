@@ -1,5 +1,9 @@
 <div class="page-wrapper">
 
+  <div ng-show="authCtrl.error">
+    <span>{{ authCtrl.error.message }}</span>
+  </div>
+
   <div class="page-header">
     <h1><a ui-sref="home"><img class="logo-img" src="images/logo.png" /></a> Log In</h1>
   </div>
