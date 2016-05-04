@@ -55,6 +55,25 @@ angular
               );
           }]
         }
+      })
+      .state("profile", {
+        url: "/profile",
+        controller: "ProfileCtrl as profileCtrl",
+        templateUrl: "users/profile.html",
+        resolve: {
+          auth: ["$state", "Users", "Auth", function($state, Users, Auth) {
+            return Auth.$requireAuth()
+              .catch(function() {
+                $state.go("home");
+              });
+          }],
+          profile: ["Users", "Auth", function(Users, Auth) {
+            return Auth.$requireAuth()
+              .then(function(auth) {
+                return Users.getProfile(auth.uid).$loaded();
+              });
+          }]
+        }
       });
 
     $urlRouterProvider.otherwise('/');
