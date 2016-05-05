@@ -16,6 +16,7 @@ angular
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
+
       .state('home', {
         url: '/',
         templateUrl: 'home/home.html',
@@ -33,6 +34,7 @@ angular
           }]
         }
       })
+
       .state('login', {
         url: '/login',
         controller: "AuthCtrl as authCtrl",
@@ -42,7 +44,7 @@ angular
             return Auth.$requireAuth()
               .then(
                 function(auth) {
-                  $state.go("home");
+                  $state.go("channels");
                 },
                 function(error) {
                   return;
@@ -51,6 +53,7 @@ angular
           }]
         }
       })
+
       .state('register', {
         url: '/register',
         controller: "AuthCtrl as authCtrl",
@@ -60,7 +63,7 @@ angular
             return Auth.$requireAuth()
               .then(
                 function(auth) {
-                  $state.go("home");
+                  $state.go("channels");
                 },
                 function(error) {
                   return;
@@ -69,6 +72,7 @@ angular
           }]
         }
       })
+
       .state("profile", {
         url: "/profile",
         controller: "ProfileCtrl as profileCtrl",
@@ -88,6 +92,7 @@ angular
           }]
         }
       })
+
       .state("channels", {
         url: "/channels",
         controller: "ChannelsCtrl as channelsCtrl",
@@ -116,6 +121,12 @@ angular
               );
           }]
         }
+      })
+
+      .state("channels.new", {
+        url: "/create",
+        controller: "ChannelsCtrl as channelsCtrl",
+        templateUrl: "channels/new.html"
       });
 
     $urlRouterProvider.otherwise('/');
