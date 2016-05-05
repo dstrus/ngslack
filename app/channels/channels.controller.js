@@ -10,13 +10,19 @@ angular.module("angularfireSlackApp")
       channelsCtrl.getDisplayName = Users.getDisplayName;
       channelsCtrl.getGravatar = Users.getGravatar;
 
+      Users.setOnline(profile.$id);
+
       channelsCtrl.newChannel = {
         name: ""
       };
 
       channelsCtrl.logout = function() {
-        Auth.$unauth();
-        $state.go("home");
+        channelsCtrl.profile.online = null;
+        channelsCtrl.profile.$save()
+          .then(function() {
+            Auth.$unauth();
+            $state.go("home");
+          });
       };
 
       channelsCtrl.createChannel = function() {

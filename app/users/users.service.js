@@ -4,6 +4,7 @@ angular.module("angularfireSlackApp")
     ["$firebaseArray", "$firebaseObject", "FirebaseUrl",
     function($firebaseArray, $firebaseObject, FirebaseUrl) {
       var usersRef = new Firebase(FirebaseUrl + "users");
+      var connectedRef = new Firebase(FirebaseUrl + ".info/connected");
       var users = $firebaseArray(usersRef);
 
       var Users = {
@@ -17,6 +18,20 @@ angular.module("angularfireSlackApp")
 
         getGravatar: function(uid) {
           return "https://www.gravatar.com/avatar/" + users.$getRecord(uid).emailHash;
+        },
+
+        setOnline: function(uid) {
+          var connected = $firebaseObject(connectedRef);
+          var online = $firebaseArray(usersRef.child(uid + "/online"));
+
+          connected.$watch(function() {
+            if (connected.$value === true) {
+              online.$add(true)
+                .then(function(connectedRef) {
+                  connectedRef.onDisconnect().remove();
+                });
+            }
+          });
         },
 
         all: users
