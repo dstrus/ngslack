@@ -127,6 +127,22 @@ angular
         url: "/create",
         controller: "ChannelsCtrl as channelsCtrl",
         templateUrl: "channels/new.html"
+      })
+
+      .state("channels.messages", {
+        url: "/{channelId}/messages",
+        controller: "MessagesCtrl as messagesCtrl",
+        templateUrl: "channels/messages.html",
+        resolve: {
+          messages: ["$stateParams", "Messages", function($stateParams, Messages) {
+            console.log("resolve messages");
+            return Messages.forChannel($stateParams.channelId).$loaded();
+          }],
+          channelName: ["$stateParams", "channels", function($stateParams, channels) {
+            console.log("resolve channelName");
+            return "#" + channels.$getRecord($stateParams.channelId).name;
+          }]
+        }
       });
 
     $urlRouterProvider.otherwise('/');
