@@ -1,4 +1,5 @@
 body {
+  background: #f1f5f8;
   padding: 0;
 }
 
@@ -27,14 +28,14 @@ aside {
   width:19.5%;
   vertical-align: top;
   height:100%;
-  background:#4d394b;
+  background:#434753;
   position:relative;
   overflow-y:scroll;
   padding-bottom:100px;
 }
 
 aside > header {
-  background:#3E313C;
+  background:#696c75;
   padding:15px 0px 15px 15px;
 }
 
@@ -48,7 +49,7 @@ aside > header h1 {
 
 aside nav {
   margin-top:20px;
-  background:#4d394b;
+  background:#434753;
   position:relative;
 }
 
@@ -74,12 +75,13 @@ aside nav ul a{
 }
 
 aside nav ul a:hover{
+  color:rgba(255,255,255,0.6);
   text-decoration: none;
-  background:#3E313C;
+  background:#373a44;
 }
 
 aside nav ul a.selected{
-  background:#4c9689;
+  background:#696c75;
   color:#fff;
   text-decoration: none !important;
 }
@@ -98,7 +100,7 @@ aside footer {
   position:fixed;
   bottom:0;
   padding:15px;
-  background:#3E313C;
+  background:#696c75;
   width:19.5%;
 }
 
@@ -154,13 +156,14 @@ article {
   height:100%;
   width:80%;
   overflow-y:scroll;
-  padding:55px 15px 65px 15px;
+  padding:55px 0 65px 0;
 }
 
 article header {
+  border-bottom: 2px solid white;
+  padding: 0 15px;
   position:fixed;
   top:0;
-  background:#fff;
   width:100%;
   z-index:2;
 }
@@ -177,23 +180,27 @@ article header h1 {
 article form {
   position:fixed;
   bottom:0;
-  padding:0 15px 15px 0;
-  background:#fff;
+  padding:0 15px 15px 15px;
   width:79%;
 }
 
 article ul {
   list-style: none;
-  margin-top:15px;
+  margin-top:0;
   margin-bottom: 0;
-  padding-left: 0;
+  padding: 0 15px;
   position:relative;
+}
+
+article ul li {
+  border-bottom: 1px solid #dfe2e5;
 }
 
 article ul .user-pic {
   width:36px;
   height:36px;
-  border-radius:4px;
+  border-radius: 50%;
+  border: 2px solid white;
   display: inline-block;
   vertical-align: top;
 }

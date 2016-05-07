@@ -6,10 +6,12 @@
 
     <nav>
       <h2>Channels</h2>
-      <ul ng-repeat="channel in channelsCtrl.channels">
-        <l1><a
+      <ul>
+        <li ng-repeat="channel in channelsCtrl.channels">
+          <a
           ui-sref="channels.messages({ channelId: channel.$id })"
-          ui-sref-active="selected"># {{ channel.name }}</a></li>
+          ui-sref-active="selected"># {{ channel.name }}</a>
+        </li>
       </ul>
 
       <ul>
@@ -17,15 +19,17 @@
       </ul>
 
       <h2>Direct Messages</h2>
-      <ul ng-repeat="user in channelsCtrl.users">
-        <li><a
+      <ul>
+        <li ng-repeat="user in channelsCtrl.users">
+          <a
           ng-if="user.$id !== channelsCtrl.profile.$id"
           ui-sref="channels.direct({ uid: user.$id })"
           ui-sref-active="selected"
           >
           <span class="presence" ng-class="{ online: user.online }"></span>
           {{ user.displayName }}
-        </a></li>
+          </a>
+        </li>
       </ul>
     </nav>
 

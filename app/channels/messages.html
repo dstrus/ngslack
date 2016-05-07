@@ -2,8 +2,8 @@
   <h1>{{ messagesCtrl.channelName }}</h1>
 </header>
 
-<ul ng-repeat="message in messagesCtrl.messages">
-  <li>
+<ul>
+  <li ng-repeat="message in messagesCtrl.messages">
     <img class="user-pic" alt="" ng-src="{{ channelsCtrl.getGravatar(message.uid) }}" />
 
     <div class="message-info">
