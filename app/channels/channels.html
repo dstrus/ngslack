@@ -1,55 +1,55 @@
-<div class="main">
-  <div class="sidebar">
-    <div class="slack-name">
-      <h2>Flack</h2>
-    </div>
+<main>
+  <aside>
+    <header>
+      <h1>Flack</h1>
+    </header>
 
-    <div class="channel-list">
-      <div class="list-head">Channels</div>
-      <div class="channel" ng-repeat="channel in channelsCtrl.channels">
-        <a
+    <nav>
+      <h2>Channels</h2>
+      <ul ng-repeat="channel in channelsCtrl.channels">
+        <l1><a
           ui-sref="channels.messages({ channelId: channel.$id })"
-          ui-sref-active="selected"># {{ channel.name }}</a>
-      </div>
+          ui-sref-active="selected"># {{ channel.name }}</a></li>
+      </ul>
 
-      <div class="channel create">
-        <a ui-sref="channels.new">+ create channel</a>
-      </div>
+      <ul>
+        <li><em><a ui-sref="channels.new">+ create channel</a></em></li>
+      </ul>
 
-      <div class="list-head">Direct Messages</div>
-      <div class="channel" ng-repeat="user in channelsCtrl.users">
-        <a
+      <h2>Direct Messages</h2>
+      <ul ng-repeat="user in channelsCtrl.users">
+        <li><a
           ng-if="user.$id !== channelsCtrl.profile.$id"
           ui-sref="channels.direct({ uid: user.$id })"
           ui-sref-active="selected"
           >
           <span class="presence" ng-class="{ online: user.online }"></span>
           {{ user.displayName }}
-        </a>
-      </div>
-    </div>
+        </a></li>
+      </ul>
+    </nav>
 
-    <div class="my-info">
+    <footer>
       <img
         class="user-pic"
         alt=""
         ng-src="{{ channelsCtrl.getGravatar(channelsCtrl.profile.$id) }}" />
-      <div class="user-info">
-        <div class="user-name">
+      <section>
+        <h2>
           <span class="presence" ng-class="{ online: channelsCtrl.profile.online }"></span>
           {{ channelsCtrl.profile.displayName }}
-        </div>
+        </h2>
 
-        <div class="options">
+        <p>
           <a ui-sref="profile">edit profile</a>
           \
           <a href="#" ng-click="channelsCtrl.logout()">logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
+        </p>
+      </section>
+    </footer>
+  </aside>
 
-  <div class="message-pane">
+  <article>
     <ui-view></ui-view>
-  </div>
-</div>
+  </article>
+</main>

@@ -14,7 +14,7 @@ body {
 }
 
 
-.main {
+main {
   position:absolute;
   top:0;
   left:0;
@@ -22,7 +22,7 @@ body {
   width:100%;
 }
 
-.sidebar {
+aside {
   display:inline-block;
   width:19.5%;
   vertical-align: top;
@@ -33,12 +33,12 @@ body {
   padding-bottom:100px;
 }
 
-.sidebar .slack-name {
+aside > header {
   background:#3E313C;
   padding:15px 0px 15px 15px;
 }
 
-.sidebar .slack-name h2{
+aside > header h1 {
   color:#fff;
   font-size:18px;
   font-weight:bold;
@@ -46,13 +46,19 @@ body {
   margin-bottom:0px;
 }
 
-.sidebar .channel-list {
+aside nav {
   margin-top:20px;
   background:#4d394b;
   position:relative;
 }
 
-.sidebar .channel-list .channel a{
+aside nav ul {
+  list-style: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+aside nav ul a{
   display:block;
   color:rgba(255,255,255,0.6);
   padding:3px 0px 3px 15px;
@@ -67,30 +73,28 @@ body {
   border-bottom-right-radius: 4px;
 }
 
-.sidebar .channel-list .channel a:hover{
+aside nav ul a:hover{
   text-decoration: none;
   background:#3E313C;
 }
 
-.sidebar .channel-list .channel a.selected{
+aside nav ul a.selected{
   background:#4c9689;
   color:#fff;
   text-decoration: none !important;
 }
 
-.sidebar .channel-list .channel.create {
-  font-style: italic;
-}
-
-.sidebar .channel-list .list-head {
+aside nav h2 {
   margin-top:10px;
   color: #fff;
+  font-size: 14px;
   font-weight: bold;
+  margin-bottom: 3px;
   margin-left: 10px;
   text-transform: uppercase;
 }
 
-.sidebar .my-info {
+aside footer {
   position:fixed;
   bottom:0;
   padding:15px;
@@ -98,7 +102,7 @@ body {
   width:19.5%;
 }
 
-.sidebar .my-info .user-pic {
+aside footer .user-pic {
   display: inline-block;
   vertical-align: top;
   width:44px;
@@ -106,29 +110,31 @@ body {
   border-radius:4px;
 }
 
-.sidebar .my-info .user-info {
+aside footer section {
   padding-left:5px;
   display: inline-block;
   vertical-align: top;
 }
 
-.sidebar .my-info .user-info .user-name {
+aside footer section h2 {
   color:#fff;
   font-size:16px;
   font-weight:bold;
+  margin: 0 0 3px 0;
 }
 
-.sidebar .my-info .user-info .options {
+aside footer section p {
   color:#999;
   font-size:12px;
 }
 
-.sidebar .my-info .user-info .options a{
+aside footer section p a,
+aside footer section p a:hover {
   color:#999;
   font-size:12px;
 }
 
-.sidebar .presence {
+aside .presence {
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -138,11 +144,11 @@ body {
   vertical-align: middle;
 }
 
-.sidebar .presence.online {
+aside .presence.online {
   background: #99d04a;
 }
 
-.message-pane {
+article {
   display:inline-block;
   vertical-align: top;
   height:100%;
@@ -151,7 +157,7 @@ body {
   padding:55px 15px 65px 15px;
 }
 
-.message-pane .header {
+article header {
   position:fixed;
   top:0;
   background:#fff;
@@ -159,7 +165,7 @@ body {
   z-index:2;
 }
 
-.message-pane .header h1 {
+article header h1 {
   padding:12px 0 10px 0;
   margin-top:0px;
   margin-bottom:0px;
@@ -168,7 +174,7 @@ body {
   font-weight:900;
 }
 
-.message-pane .message-form {
+article form {
   position:fixed;
   bottom:0;
   padding:0 15px 15px 0;
@@ -176,12 +182,15 @@ body {
   width:79%;
 }
 
-.message-pane .message-wrap {
-  position:relative;
+article ul {
+  list-style: none;
   margin-top:15px;
+  margin-bottom: 0;
+  padding-left: 0;
+  position:relative;
 }
 
-.message-pane .message-wrap .user-pic {
+article ul .user-pic {
   width:36px;
   height:36px;
   border-radius:4px;
@@ -189,18 +198,18 @@ body {
   vertical-align: top;
 }
 
-.message-pane .message-wrap .message-info {
+article ul .message-info {
   display: inline-block;
   vertical-align: top;
   padding-left:5px;
 }
 
-.message-pane .message-wrap .message-info .user-name {
+article ul .message-info .user-name {
   color:#555459;
   font-weight:900;
 }
 
-.message-pane .message-wrap .message-info .user-name span{
+article ul .message-info .user-name span{
   color:#ccc;
   font-weight: normal;
   font-size:10px;
