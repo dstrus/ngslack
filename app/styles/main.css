@@ -201,7 +201,7 @@ article header .user-pic.online {
   border-color: #62bf6e;
 }
 
-article form {
+article form#new-message {
   position:fixed;
   border-top: 2px solid white;
   bottom:0;
@@ -209,11 +209,11 @@ article form {
   width:79%;
 }
 
-article form input.form-control {
+article form#new-message input.form-control {
   border: 0;
 }
 
-article form .btn {
+article form#new-message .btn {
   background: #f9fcff;
   border: 0;
   color: #7ac5ef;
