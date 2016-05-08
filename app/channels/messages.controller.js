@@ -1,7 +1,8 @@
 angular.module("angularfireSlackApp")
   .controller(
     "MessagesCtrl",
-    ["profile", "channelName", "messages", function(profile, channelName, messages) {
+    ["profile", "channelName", "messages",
+    function(profile, channelName, messages) {
       var messagesCtrl = this;
       messagesCtrl.messages = messages;
       messagesCtrl.channelName = channelName;
