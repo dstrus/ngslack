@@ -25,7 +25,9 @@ main {
 
 aside {
   display:inline-block;
+  /*min-width: 175px;*/
   width:19.5%;
+
   vertical-align: top;
   height:100%;
   background:#434753;
@@ -35,16 +37,17 @@ aside {
 }
 
 aside > header {
-  background:#696c75;
-  padding:15px 0px 15px 15px;
+  border-bottom: 2px solid #4e5361;
+  padding:15px;
 }
 
 aside > header h1 {
-  color:#fff;
-  font-size:18px;
-  font-weight:bold;
+  color:#63697b;
+  font-size:14px;
+  font-weight:300;
   margin-top:0px;
   margin-bottom:0px;
+  text-transform: uppercase;
 }
 
 aside nav {
@@ -88,9 +91,9 @@ aside nav ul a.selected{
 
 aside nav h2 {
   margin-top:10px;
-  color: #fff;
+  color: #63697b;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 300;
   margin-bottom: 3px;
   margin-left: 10px;
   text-transform: uppercase;
@@ -109,7 +112,7 @@ aside footer .user-pic {
   vertical-align: top;
   width:44px;
   height:44px;
-  border-radius:4px;
+  border-radius:50%;
 }
 
 aside footer section {
@@ -140,14 +143,14 @@ aside .presence {
   border-radius: 50%;
   display: inline-block;
   position: relative;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   background: #ab9ba9;
   vertical-align: middle;
 }
 
 aside .presence.online {
-  background: #99d04a;
+  background: #62bf6e;
 }
 
 article {
@@ -159,6 +162,15 @@ article {
   padding:55px 0 65px 0;
 }
 
+/*@media only screen and (max-width: 893px) {
+  article {
+    width: auto;
+  }
+  article ul {
+    width: auto;
+  }
+}*/
+
 article header {
   border-bottom: 2px solid white;
   padding: 0 15px;
@@ -169,19 +181,46 @@ article header {
 }
 
 article header h1 {
-  padding:12px 0 10px 0;
+  padding:9px 0 10px 0;
   margin-top:0px;
   margin-bottom:0px;
-  font-size:24px;
-  color:#555459;
-  font-weight:900;
+  font-size:16px;
+  color:#8c8b93;
+  font-weight:300;
+}
+
+article header .user-pic {
+  width:32px;
+  height:32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: inline-block;
+}
+
+article header .user-pic.online {
+  border-color: #62bf6e;
 }
 
 article form {
   position:fixed;
+  border-top: 2px solid white;
   bottom:0;
-  padding:0 15px 15px 15px;
+  padding:15px;
   width:79%;
+}
+
+article form input.form-control {
+  border: 0;
+}
+
+article form .btn {
+  background: #f9fcff;
+  border: 0;
+  color: #7ac5ef;
+  font-weight: 700;
+  margin-top: 1px;
+  padding-bottom: 7px;
+  text-transform: uppercase;
 }
 
 article ul {
@@ -194,6 +233,7 @@ article ul {
 
 article ul li {
   border-bottom: 1px solid #dfe2e5;
+  padding: 6px 0;
 }
 
 article ul .user-pic {
@@ -214,6 +254,7 @@ article ul .message-info {
 article ul .message-info .user-name {
   color:#555459;
   font-weight:900;
+  font-size: 12px;
 }
 
 article ul .message-info .user-name span{
