@@ -12,6 +12,7 @@ angular
   .module('angularfireSlackApp', [
     'firebase',
     'angular-md5',
+    'angularResizable',
     'ui.router'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {

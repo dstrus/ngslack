@@ -1,13 +1,12 @@
 <header>
   <h1>
-    {{ messagesCtrl.channelName }}
-    <span ng-repeat="user in channelsCtrl.users">
+    <span>{{ messagesCtrl.channelName }}</span>
     <img
+      ng-repeat="user in channelsCtrl.users"
       class="user-pic"
       ng-class="{ online: user.online }"
       alt="{{ user.displayName }}"
       ng-src="{{ channelsCtrl.getGravatar(user.$id) }}" />
-    </span>
   </h1>
 </header>
 
