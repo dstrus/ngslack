@@ -10,11 +10,23 @@ angular.module("angularfireSlackApp")
       channelsCtrl.getDisplayName = Users.getDisplayName;
       channelsCtrl.getGravatar = Users.getGravatar;
 
-      channelsCtrl.unreadCounts = {};
       channels.forEach(function(channel) {
-        Messages.forChannelFromTimestamp(channel.$id, 1462935700935)
+        var timestamp = (profile.channels && profile.channels[channel.$id] && profile.channels[channel.$id].lastReadTimestamp) || 1;
+        var offset = (-1);
+        if (timestamp == 1) {
+          offset = 0;
+        }
+
+        if (!profile.channels) {
+          profile.channels = {};
+        }
+        if (!profile.channels[channel.$id]) {
+          profile.channels[channel.$id] = { lastReadTimestamp: timestamp };
+        }
+
+        Messages.forChannelFromTimestamp(channel.$id, timestamp)
           .$loaded().then(function(messages) {
-            channelsCtrl.unreadCounts[channel.$id] = Math.max(messages.length - 1, 0);
+            profile.channels[channel.$id].unreadCount = Math.max(messages.length + offset, 0);
           });
       });
 

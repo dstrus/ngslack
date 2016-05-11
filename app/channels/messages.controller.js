@@ -1,8 +1,8 @@
 angular.module("angularfireSlackApp")
   .controller(
     "MessagesCtrl",
-    ["$firebaseArray", "profile", "channelName", "channelId", "messages",
-    function($firebaseArray, profile, channelName, channelId, messages) {
+    ["$firebaseArray", "Messages", "profile", "channelName", "channelId", "messages",
+    function($firebaseArray, Messages, profile, channelName, channelId, messages) {
       var messagesCtrl = this;
       messagesCtrl.messages = messages;
       messagesCtrl.channelName = channelName;
@@ -24,8 +24,18 @@ angular.module("angularfireSlackApp")
 
         if (!profile.channels[messagesCtrl.channelId] || profile.channels[messagesCtrl.channelId].lastReadTimestamp < timestamp) {
           profile.channels[messagesCtrl.channelId] = { lastReadTimestamp: timestamp };
+          messagesCtrl.updateUnreadCount(timestamp)
           profile.$save();
+
         }
+      };
+
+      messagesCtrl.updateUnreadCount = function(timestamp) {
+        Messages.forChannelFromTimestamp(channelId, timestamp)
+          .$loaded().then(function(messages) {
+            profile.channels[messagesCtrl.channelId].unreadCount = Math.max(messages.length - 1, 0);
+            profile.$save();
+          });
       };
 
       messagesCtrl.sendMessage = function() {

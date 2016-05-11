@@ -13,8 +13,8 @@
             ui-sref="channels.messages({ channelId: channel.$id })"
             ui-sref-active="selected">
               # {{ channel.name }}
-              <span class="unread-count" ng-show="channelsCtrl.unreadCounts[channel.$id] > 0">
-                {{ channelsCtrl.unreadCounts[channel.$id] }}
+              <span class="unread-count" ng-show="channelsCtrl.profile.channels[channel.$id].unreadCount > 0">
+                {{ channelsCtrl.profile.channels[channel.$id].unreadCount }}
               </span>
           </a>
         </li>

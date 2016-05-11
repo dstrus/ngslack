@@ -137,7 +137,7 @@ angular
         templateUrl: "channels/messages.html",
         resolve: {
           messages: ["$stateParams", "Messages", function($stateParams, Messages) {
-            return Messages.forChannelFromTimestamp($stateParams.channelId, 1462935700935).$loaded();
+            return Messages.forChannel($stateParams.channelId).$loaded();
           }],
           channelName: ["$stateParams", "channels", function($stateParams, channels) {
             return "#" + channels.$getRecord($stateParams.channelId).name;
