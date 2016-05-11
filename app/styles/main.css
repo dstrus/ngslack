@@ -153,7 +153,7 @@ article {
   vertical-align: top;
   height:100%;
   overflow-y:scroll;
-  padding:55px 0 65px 0;
+  padding:55px 0 70px 0;
 }
 
 /*@media only screen and (max-width: 893px) {
@@ -166,6 +166,7 @@ article {
 }*/
 
 article header {
+  background: #f1f5f8;
   border-bottom: 2px solid white;
   padding: 0 15px;
   position:fixed;
@@ -202,6 +203,7 @@ article header .user-pic.online {
 }
 
 article form#new-message {
+  background: #f1f5f8;
   position:fixed;
   border-top: 2px solid white;
   bottom:0;

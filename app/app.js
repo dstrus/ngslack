@@ -13,6 +13,7 @@ angular
     'firebase',
     'angular-md5',
     'angularResizable',
+    'angular-inview',
     'ui.router'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -140,6 +141,9 @@ angular
           }],
           channelName: ["$stateParams", "channels", function($stateParams, channels) {
             return "#" + channels.$getRecord($stateParams.channelId).name;
+          }],
+          channelId: ["$stateParams", "channels", function($stateParams, channels) {
+            return $stateParams.channelId;
           }]
         }
       })
@@ -157,10 +161,30 @@ angular
               .then(function() {
                 return "@" + Users.getDisplayName($stateParams.uid);
               });
+          }],
+          channelId: ["$stateParams", "channels", function($stateParams, channels) {
+            return $stateParams.uid;
           }]
         }
       });
 
     $urlRouterProvider.otherwise('/');
   })
-  .constant('FirebaseUrl', 'https://des-ngslack.firebaseio.com/');
+  .constant('FirebaseUrl', 'https://des-ngslack.firebaseio.com/')
+  .directive('scrollBottom', ['$timeout', function ($timeout) {
+    // See http://stackoverflow.com/a/32482823 
+    return {
+      scope: {
+        scrollBottom: "="
+      },
+      link: function ($scope, $element) {
+        $scope.$watchCollection('scrollBottom', function (newValue) {
+          if (newValue) {
+            $timeout(function(){
+              $element.scrollTop($element[0].scrollHeight);
+            }, 0);
+          }
+        });
+      }
+    }
+  }]);

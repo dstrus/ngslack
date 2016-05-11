@@ -1,44 +1,49 @@
-<header>
-  <h1>
-    <span>{{ messagesCtrl.channelName }}</span>
-    <img
-      ng-repeat="user in channelsCtrl.users"
-      class="user-pic"
-      ng-class="{ online: user.online }"
-      alt="{{ user.displayName }}"
-      ng-src="{{ channelsCtrl.getGravatar(user.$id) }}" />
-  </h1>
-</header>
+<article scroll-bottom="messagesCtrl.messages">
+  <header>
+    <h1>
+      <span>{{ messagesCtrl.channelName }}</span>
+      <img
+        ng-repeat="user in channelsCtrl.users"
+        class="user-pic"
+        ng-class="{ online: user.online }"
+        alt="{{ user.displayName }}"
+        ng-src="{{ channelsCtrl.getGravatar(user.$id) }}" />
+    </h1>
+  </header>
 
-<ul>
-  <li ng-repeat="message in messagesCtrl.messages">
-    <img
-      class="user-pic"
-      alt="{{ channelsCtrl.getDisplayName(message.uid) }}"
-      ng-src="{{ channelsCtrl.getGravatar(message.uid) }}" />
+  <ul in-view-container>
+    <li
+      id="message_{{ message.$id }}"
+      ng-repeat="message in messagesCtrl.messages"
+      in-view="$inview&&messagesCtrl.markAsRead($index, $inview, $inviewpart, $event)">
+      <img
+        class="user-pic"
+        alt="{{ channelsCtrl.getDisplayName(message.uid) }}"
+        ng-src="{{ channelsCtrl.getGravatar(message.uid) }}" />
 
-    <div class="message-info">
-      <div class="user-name">
-        {{ channelsCtrl.getDisplayName(message.uid) }}
-        <span class="timestamp">{{ message.timestamp | date: "short" }}</span>
+      <div class="message-info">
+        <div class="user-name">
+          {{ channelsCtrl.getDisplayName(message.uid) }}
+          <span class="timestamp">{{ message.timestamp | date: "short" }}</span>
+        </div>
+
+        <div class="message">
+          {{ message.body }}
+        </div>
       </div>
+    </li>
+  </ul>
 
-      <div class="message">
-        {{ message.body }}
-      </div>
-    </div>
-  </li>
-</ul>
-
-<form id="new-message" ng-submit="messagesCtrl.sendMessage()">
-  <p class="input-group">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Type a message..."
-      ng-model="messagesCtrl.message">
-    <span class="input-group-btn">
-      <button type="submit" class="btn btn-default">Send</button>
-    </span>
-  </p>
-</form>
+  <form id="new-message" ng-submit="messagesCtrl.sendMessage()">
+    <p class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Type a message..."
+        ng-model="messagesCtrl.message">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-default">Send</button>
+      </span>
+    </p>
+  </form>
+</article>
