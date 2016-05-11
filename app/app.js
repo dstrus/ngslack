@@ -137,7 +137,7 @@ angular
         templateUrl: "channels/messages.html",
         resolve: {
           messages: ["$stateParams", "Messages", function($stateParams, Messages) {
-            return Messages.forChannel($stateParams.channelId).$loaded();
+            return Messages.forChannelFromTimestamp($stateParams.channelId, 1462935700935).$loaded();
           }],
           channelName: ["$stateParams", "channels", function($stateParams, channels) {
             return "#" + channels.$getRecord($stateParams.channelId).name;
@@ -172,7 +172,7 @@ angular
   })
   .constant('FirebaseUrl', 'https://des-ngslack.firebaseio.com/')
   .directive('scrollBottom', ['$timeout', function ($timeout) {
-    // See http://stackoverflow.com/a/32482823 
+    // See http://stackoverflow.com/a/32482823
     return {
       scope: {
         scrollBottom: "="

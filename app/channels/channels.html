@@ -10,8 +10,13 @@
       <ul>
         <li ng-repeat="channel in channelsCtrl.channels">
           <a
-          ui-sref="channels.messages({ channelId: channel.$id })"
-          ui-sref-active="selected"># {{ channel.name }}</a>
+            ui-sref="channels.messages({ channelId: channel.$id })"
+            ui-sref-active="selected">
+              # {{ channel.name }}
+              <span class="unread-count" ng-show="channelsCtrl.unreadCounts[channel.$id] > 0">
+                {{ channelsCtrl.unreadCounts[channel.$id] }}
+              </span>
+          </a>
         </li>
       </ul>
 

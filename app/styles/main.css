@@ -83,6 +83,21 @@ aside nav ul a.selected{
   text-decoration: none !important;
 }
 
+.unread-count {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: firebrick;
+  border-radius: 20px;
+  border: 1px solid firebrick;
+  text-align: center;
+  font-size: 11px;
+  float: right;
+  margin-right: 1em;
+  line-height: 11px;
+  padding: 3px;
+}
+
 aside nav h2 {
   margin-top:10px;
   color: #63697b;
